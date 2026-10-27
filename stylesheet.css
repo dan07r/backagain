@@ -1,8 +1,10 @@
 
+* {
+      box-sizing: border-box;
+
+}
 
 body {
-    box-sizing: border-box;
-
     display: flex;
     flex-direction: column;
     background-color: black;
@@ -22,7 +24,6 @@ header {
 
 .card-holder {
     display: flex;
-    justify-content: space-evenly;
     gap: 20px;
 
 }
@@ -33,4 +34,18 @@ header {
     padding: 10px;
     border: 2px solid green;
     flex: 1 1 0;
+}
+
+@media (max-width: 600px) { 
+
+    .card-holder {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .card {
+        text-align: center;
+    }
+
+
 }
