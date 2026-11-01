@@ -20,6 +20,12 @@ header {
     background-color: white;
     color: black;
     border-radius: 10px;
+    transition: background-color 0.3s ease;
+
+}
+
+.btn:hover {
+    background-color: lightgray;
 }
 
 .card-holder {
@@ -31,20 +37,32 @@ header {
 .card {
     background-color: white;
     color: black;
-    padding: 10px;
     border: 2px solid green;
     flex: 1 1 0;
+    padding: 20px;
+    transition: background-color 0.3s ease;
+
 }
+
+.card:hover {
+    background-color: lightgray;
+
+}
+
 
 @media (max-width: 600px) { 
 
     .card-holder {
         flex-direction: column;
         gap: 30px;
+        align-items: center;
+        padding: 20px;
     }
 
     .card {
         text-align: center;
+        width: 100%;
+        max-width: 350px;
     }
 
 
