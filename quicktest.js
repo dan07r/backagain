@@ -12,12 +12,7 @@ button.addEventListener('click', () => {
 
     clicks += 1;
 
-    if(clicks === 1) {
-        header.textContent = `Clicked ${clicks} time`;
-    }
-    else {
-        header.textContent = `Clicked ${clicks} times`;
-    }
+    updateHeading();
 
 })
 
@@ -25,20 +20,49 @@ resetbtn.addEventListener('click', () => {
 
     clicks = 0;
 
-    header.textContent = `Clicked ${clicks} times`;
+    updateHeading();
+
+    header.textContent = `Start Clicking!`;
+
+
 })
 
 minus.addEventListener('click', () => {
 
-    if (clicks === 0) {
-        header.textContent = `Clicks ${clicks} times`;
-    }else if (clicks === 1){
+    if (clicks > 0) {
 
-     header .textContent = `Clicked ${clicks} times`;
-
-    }else {
         clicks -= 1;
 
-        header.textContent = `Clicks ${clicks} times`;
     }
+
+    updateHeading();
+
 })
+
+function updateHeading () {
+
+
+    if (clicks === 0) {
+
+        header.style.color = 'gray';
+        minus.disabled = true;
+    }else {
+
+        header.style.color = 'green';
+        minus.disabled = false;
+
+
+    }
+
+    if (clicks === 1){
+
+        header.textContent = `You clicked ${clicks} time`;
+
+    }else {
+
+
+        header.textContent = `You clicked ${clicks} times`
+    }
+}
+
+updateHeading();
