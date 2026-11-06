@@ -14,11 +14,20 @@ const nextMessage = document.querySelector('.next-message');
 
 let messageIndex = 0;
 
+const messageText = document.querySelector(`.message`);
+
+
+const message = {
+    text: 'Keep going!',
+    author: "Daniel"
+};
+
 const messages = [
-    'Keep going!',
-    "You're making progress!",
-    'One step at a time!',
-    'poopy!'
+    
+    { text: 'Keep going!', author: 'Daniel' },
+    { text: "You're making progress!", author: 'Coach' },
+    { text: 'One step at a time!', author: 'Reminder' },
+    { text: 'poopy butt', author: 'Daniel'}
 
 ];
 
@@ -31,15 +40,12 @@ previousMessage.addEventListener('click', () => {
         messageIndex = messages.length - 1;
     }
 
-    messageText.textContent = messages[messageIndex];
+    updateMessage();
 
 })
 
 
-
-const messageText = document.querySelector(`.message`);
-
-messageText.textContent = messages[0];
+messageText.textContent = `${message.text} -- ${message.author}`;
 
 nextMessage.addEventListener('click', () => {
 
@@ -50,7 +56,7 @@ nextMessage.addEventListener('click', () => {
         messageIndex = 0;
     }
 
-    messageText.textContent = messages[messageIndex];
+    updateMessage();
 })
 
 
@@ -110,5 +116,14 @@ function updateHeading () {
         header.textContent = `You clicked ${clicks} times`
     }
 }
+
+function updateMessage () {
+
+    messageText.textContent = `${messages[messageIndex].text} — ${messages[messageIndex].author}`;
+
+
+}
+
+updateMessage();
 
 updateHeading();
