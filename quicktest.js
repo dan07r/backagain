@@ -6,7 +6,53 @@ const resetbtn = document.querySelector('.reset');
 
 const minus = document.querySelector('.minusbtn');
 
+const previousMessage = document.querySelector('.previous-message');
+
 let clicks = 0;
+
+const nextMessage = document.querySelector('.next-message');
+
+let messageIndex = 0;
+
+const messages = [
+    'Keep going!',
+    "You're making progress!",
+    'One step at a time!',
+    'poopy!'
+
+];
+
+previousMessage.addEventListener('click', () => {
+
+      messageIndex -= 1;
+
+    if(messageIndex < 0 ){
+
+        messageIndex = messages.length - 1;
+    }
+
+    messageText.textContent = messages[messageIndex];
+
+})
+
+
+
+const messageText = document.querySelector(`.message`);
+
+messageText.textContent = messages[0];
+
+nextMessage.addEventListener('click', () => {
+
+    messageIndex += 1;
+
+    if(messageIndex >= messages.length){
+
+        messageIndex = 0;
+    }
+
+    messageText.textContent = messages[messageIndex];
+})
+
 
 button.addEventListener('click', () => {
 
