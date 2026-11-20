@@ -16,11 +16,8 @@ let messageIndex = 0;
 
 const messageText = document.querySelector(`.message`);
 
+const messagePosition = document.querySelector(`.message-position`);
 
-const message = {
-    text: 'Keep going!',
-    author: "Daniel"
-};
 
 const messages = [
     
@@ -43,9 +40,6 @@ previousMessage.addEventListener('click', () => {
     updateMessage();
 
 })
-
-
-messageText.textContent = `${message.text} -- ${message.author}`;
 
 nextMessage.addEventListener('click', () => {
 
@@ -121,6 +115,7 @@ function updateMessage () {
 
     messageText.textContent = `${messages[messageIndex].text} — ${messages[messageIndex].author}`;
 
+    messagePosition.textContent = `${messageIndex + 1} of ${messages.length}`;
 
 }
 
