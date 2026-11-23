@@ -18,6 +18,11 @@ const messageText = document.querySelector(`.message`);
 
 const messagePosition = document.querySelector(`.message-position`);
 
+const randomMessage = document.querySelector(`.random-message`);
+
+const resetCount = document.querySelector(`.resetCount`);
+
+const tracker = [0,0,0,0];
 
 const messages = [
     
@@ -27,6 +32,19 @@ const messages = [
     { text: 'poopy butt', author: 'Daniel'}
 
 ];
+
+const counter = document.querySelector('.count');
+
+resetCount.addEventListener(`click`, () => {
+
+    for(let i = 0; i < tracker.length; i++){
+
+        tracker[i] = 0;
+    }
+
+    displayCount();
+
+})
 
 previousMessage.addEventListener('click', () => {
 
@@ -51,6 +69,25 @@ nextMessage.addEventListener('click', () => {
     }
 
     updateMessage();
+})
+
+randomMessage.addEventListener('click', () => {
+
+    
+    const previousIndex = messageIndex;
+
+    if(messages.length > 1) {
+
+    do{
+        
+        messageIndex = Math.floor(Math.random() * messages.length);
+
+    } while(previousIndex === messageIndex);
+
+        updateMessage();
+
+    }
+
 })
 
 
@@ -107,7 +144,7 @@ function updateHeading () {
     }else {
 
 
-        header.textContent = `You clicked ${clicks} times`
+        header.textContent = `You clicked ${clicks} times`;
     }
 }
 
@@ -116,6 +153,27 @@ function updateMessage () {
     messageText.textContent = `${messages[messageIndex].text} — ${messages[messageIndex].author}`;
 
     messagePosition.textContent = `${messageIndex + 1} of ${messages.length}`;
+
+    tracker[messageIndex] += 1;
+
+    displayCount();
+
+
+
+}
+
+function displayCount() {
+
+
+    if (tracker[messageIndex] === 1) { 
+    
+        counter.textContent = `Shown ${tracker[messageIndex]} time`;
+
+    }else {
+        
+        counter.textContent = `Shown ${tracker[messageIndex]} times`;
+
+    }
 
 }
 
